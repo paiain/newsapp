@@ -19,6 +19,12 @@ class _NewspageState extends State<Newspage> {
 
     jsonData = json.decode(utf8.decode(respones.bodyBytes));
     for (var data in jsonData['articles']) {
+      print(data['urlToImage']);
+
+      if (data['urlToImage'] == null) {
+        data['urlToImage'] = 'https://shorturl.asia/qnGHY';
+      }
+
       THNewsData news =
           THNewsData(data['title'], data['description'], data['urlToImage']);
       dataList.add(news);
